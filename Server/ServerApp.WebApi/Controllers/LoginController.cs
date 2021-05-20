@@ -21,7 +21,7 @@ namespace ServerApp.WebApi.Controllers
         }
 
         
-        [HttpPost("{model}")]
+        [HttpPost]
         public async Task<IActionResult> Login([FromBody]LoginFormModel model)
         {
             await _repository.Add(model);
@@ -35,7 +35,7 @@ namespace ServerApp.WebApi.Controllers
         [HttpGet]
         public JsonResult GetLogin(int id)
         {
-            return Json(_repository.Get(id));
+            return Json(_repository.Get(id).Result);
         }
         
     }
